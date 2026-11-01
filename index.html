@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Gracefully handle and suppress Vite HMR WebSocket connection closed warnings in preview environment
+      window.addEventListener('error', function(e) {
+        if (e && (
+          (e.message && e.message.includes('WebSocket')) ||
+          (e.filename && e.filename.includes('@vite/client'))
+        )) {
+          e.preventDefault?.();
+          e.stopImmediatePropagation?.();
+          return true;
+        }
+      }, true);
+      window.addEventListener('unhandledrejection', function(e) {
+        var reason = e ? (e.reason || '') : '';
+        if (
+          String(reason).includes('WebSocket') ||
+          String(reason.stack || '').includes('@vite/client')
+        ) {
+          e.preventDefault?.();
+          e.stopImmediatePropagation?.();
+        }
+      }, true);
+    </script>
+    <title>ODA EDUCATIONAL APP - Grade 9-12 & Freshman University Learning Platform</title>
+    <meta name="description" content="ODA EDUCATIONAL APP: Curriculum-based educational learning platform for Grade 9 to 12 and Freshman University students with video lectures, structured notes, concept breakdowns, and timed exams." />
+    <meta property="og:title" content="ODA EDUCATIONAL APP - Grade 9-12 & Freshman University Learning Platform" />
+    <meta property="og:description" content="ODA EDUCATIONAL APP: Curriculum-based educational learning platform for Grade 9 to 12 and Freshman University students." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#0284c7" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="ODA EDU" />
+    <link rel="icon" type="image/png" href="/pwa-192x192.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-slate-50 text-slate-900 antialiased font-sans selection:bg-sky-100 selection:text-sky-900">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
